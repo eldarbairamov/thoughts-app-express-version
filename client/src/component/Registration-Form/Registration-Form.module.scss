@@ -1,0 +1,74 @@
+@import "../../style/placeholders";
+
+.RegistrationForm {
+  @extend %center-column;
+
+  height: 93%;
+  gap: 10px;
+
+  h2 {
+    font-style: italic;
+  }
+
+  .form_wrapper {
+    @extend %center-column;
+
+    gap: 50px;
+
+    .form_control {
+      @extend %center-column;
+      position: relative;
+
+      gap: 10px;
+
+      .form_labels {
+        @extend %center-row;
+        justify-content: space-between;
+
+        width: 100%;
+      }
+
+      > p {
+        position: absolute;
+        color: indianred;
+        font-size: 14px;
+        top: 65px;
+      }
+
+      label {
+        align-self: flex-start;
+        color: var(--main-color);
+      }
+
+      input {
+        padding: 10px;
+        width: 400px;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+      }
+    }
+  }
+
+  .info {
+    @extend %center-row;
+    gap: 10px;
+
+    p {
+      color: #818181;
+      transition: color .3s;
+    }
+
+    p:nth-child(2) {
+      color: var(--main-color);
+      font-weight: bold;
+      pointer-events: auto;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--main-color-hover);
+      }
+    }
+  }
+
+}

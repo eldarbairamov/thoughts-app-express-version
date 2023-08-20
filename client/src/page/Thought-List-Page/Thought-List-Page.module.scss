@@ -1,0 +1,13 @@
+@import "../../style/placeholders";
+@import "../../style/mixins";
+
+.ThoughtListPage {
+  @extend %center-column;
+
+  width: 100%;
+  height: 100%;
+
+  @include small_phones {
+    width: 1000px;
+  }
+}

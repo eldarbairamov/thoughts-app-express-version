@@ -1,0 +1,52 @@
+@import "../../style/placeholders";
+
+.LoginPage {
+  @extend %full-view;
+
+  background: var(--background-color);
+
+  .top {
+    @extend %center-row;
+
+    height: 7%;
+    background: var(--navbar-bg);
+
+    .typing_wrapper {
+      h2 {
+        animation:
+                typing 1s steps(5),
+                blink .5s step-end infinite alternate;
+        overflow: hidden;
+        white-space: nowrap;
+        color: var(--typing-font-color);
+        cursor: default;
+      }
+    }
+
+    p {
+      position: absolute;
+      left: 50px;
+      cursor: pointer;
+      color: var(--main-color);
+      font-size: 30px;
+      font-style: italic;
+      font-weight: 700;
+    }
+  }
+
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}

@@ -1,0 +1,13 @@
+.Button {
+  border: none;
+  background: var(--main-color);
+  color: white;
+  cursor: pointer;
+  font-style: italic;
+  padding: 10px 20px;
+  border-radius: 5px;
+
+  &:hover {
+    background: var(--main-color-hover);
+  }
+}

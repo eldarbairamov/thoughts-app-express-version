@@ -1,0 +1,9 @@
+@import "../../style/placeholders";
+
+.Footer {
+  @extend %center-row;
+
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+}

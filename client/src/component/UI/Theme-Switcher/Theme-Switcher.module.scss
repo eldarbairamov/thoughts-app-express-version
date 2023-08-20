@@ -1,0 +1,9 @@
+.ThemeSwitcher {
+  position: absolute;
+  left: 50px;
+
+  svg {
+    transition: .3s;
+    cursor: pointer;
+  }
+}

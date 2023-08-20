@@ -1,0 +1,11 @@
+@import "../../style/placeholders";
+
+.MainOutlet {
+  height: calc(100% - 70px);
+  width: 100%;
+
+  @extend %center-column;
+  background: var(--background-color);
+
+  position: relative;
+}

@@ -1,0 +1,43 @@
+@import "../../style/placeholders";
+@import "../../style/variables";
+
+.LoginForm {
+  @extend %center-column;
+
+  height: 93%;
+  gap: 10px;
+
+  h2 {
+    font-style: italic;
+  }
+
+  .form_wrapper {
+    @extend %center-column;
+
+    gap: 50px;
+  }
+
+  .info {
+    @extend %center-row;
+    gap: 10px;
+
+    p {
+      color: #818181;
+      transition: color .3s;
+    }
+
+    p:nth-child(2) {
+      color: var(--main-color);
+      font-weight: bold;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: color .3s;
+
+      &:hover {
+        color: var(--main-color-hover);
+      }
+    }
+
+  }
+
+}

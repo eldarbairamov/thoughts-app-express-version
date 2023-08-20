@@ -1,0 +1,14 @@
+@import "../../../style/variables";
+
+.NoBgButton {
+  border: none;
+  background: none;
+  color: var(--main-color);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+
+  &:hover {
+    color: var(--main-color-hover);
+  }
+}

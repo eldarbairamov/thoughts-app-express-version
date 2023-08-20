@@ -1,0 +1,38 @@
+%center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+%center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+%border {
+  border: 1px solid black;
+}
+
+%border-bottom {
+  border-bottom: 1px solid black;
+}
+
+%nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+%full-view {
+  width: 100vw;
+  height: 100vh;
+}
+
+%input {
+  padding: 10px;
+  outline: none;
+  text-align: center;
+  border: none;
+}

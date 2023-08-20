@@ -1,0 +1,15 @@
+@import "../../style/placeholders";
+@import "../../style/mixins";
+
+.MainLayout {
+  @extend %center-column;
+  @extend %full-view;
+
+  @include small_phones {
+    width: 1000px;
+  }
+
+  @include height_limit {
+    height: 1000px;
+  }
+}
