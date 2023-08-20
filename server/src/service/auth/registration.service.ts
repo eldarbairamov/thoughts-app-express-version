@@ -1,8 +1,12 @@
 import { IRegistration } from "../../interface";
 import { User } from "../../model";
 import { ApiException } from "../../exception";
+import { registrationValidator } from "../../validator/auth.validator";
+import { validationService } from "../validation.service";
 
 export const registrationService = async ( data: IRegistration ): Promise<void> => {
+   await validationService( registrationValidator, data );
+
    const [ email, username ] = await Promise.all( [
       User.findOne( { email: data.email } ),
       User.findOne( { username: data.username } )

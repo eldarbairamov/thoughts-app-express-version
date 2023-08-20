@@ -3,8 +3,12 @@ import { ILogin, ISuccessLogin } from "../../interface";
 import { OAuthModel, User } from "../../model";
 import { ApiException } from "../../exception";
 import jwt from "jsonwebtoken";
+import { validationService } from "../validation.service";
+import { loginValidator } from "../../validator/auth.validator";
 
 export const loginService = async ( data: ILogin ): Promise<ISuccessLogin> => {
+   await validationService( loginValidator, data );
+
    const user = await User.findOne( { email: data.email } );
    const isPasswordValid = user ? await bcrypt.compare( data.password, user.password ) : null;
 
