@@ -10,7 +10,7 @@ export const ThoughtItem = ( { thought }: { thought: IThought } ) => {
    const dispatch = useAppDispatch();
 
    const deleteThought = async () => {
-      dispatch( asyncThoughtActions.deleteThought( { thoughtId: thought.id } ) );
+      dispatch( asyncThoughtActions.deleteThought( { thoughtId: thought._id } ) );
    };
 
    return (
