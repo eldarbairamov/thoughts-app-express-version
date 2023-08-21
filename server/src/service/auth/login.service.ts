@@ -1,10 +1,11 @@
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 import { ILogin, ISuccessLogin } from "../../interface";
 import { OAuthModel, User } from "../../model";
 import { ApiException } from "../../exception";
 import jwt from "jsonwebtoken";
 import { validationService } from "../validation.service";
 import { loginValidator } from "../../validator/auth.validator";
+import { config } from "../../config";
 
 export const loginService = async ( data: ILogin ): Promise<ISuccessLogin> => {
    await validationService( loginValidator, data );
@@ -15,8 +16,8 @@ export const loginService = async ( data: ILogin ): Promise<ISuccessLogin> => {
    if ( !user || !isPasswordValid ) throw new ApiException( "Wrong email or password", 401 );
 
    const tokenPair = {
-      accessToken: jwt.sign( { userId: user.id, }, "secret-access-key", { expiresIn: "30s" } ),
-      refreshToken: jwt.sign( { userId: user.id }, "secret-refresh-key", { expiresIn: "7d" } )
+      accessToken: jwt.sign( { userId: user.id, }, config.SECRET_ACCESS_KEY, { expiresIn: "1d" } ),
+      refreshToken: jwt.sign( { userId: user.id }, config.SECRET_REFRESH_KEY, { expiresIn: "7d" } )
    };
 
    await OAuthModel.create( { ownerId: user.id, ...tokenPair } );

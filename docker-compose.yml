@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  api:
+    container_name: thoughts-api-express
+    build: ./server
+    command: npm run start:prod
+    ports:
+      - "5300:5300"
+    env_file:
+      - ./server/.env
+    environment:
+      - MONGO_URI=mongodb://eldar:eldar010596@db:27017/thoughts-app
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    container_name: thoughts-db-express
+    command: mongod --quiet --logpath /dev/null
+    restart: unless-stopped
+    ports:
+      - "27019:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=thoughts-app
+      - MONGO_INITDB_ROOT_USERNAME=eldar
+      - MONGO_INITDB_ROOT_PASSWORD=eldar010596
+    volumes:
+      - ./db-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro

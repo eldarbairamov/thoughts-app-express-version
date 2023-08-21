@@ -4,6 +4,7 @@ import { ApiException } from "../exception";
 import expressAsyncHandler from "express-async-handler";
 import { TypedRequest } from "../interface";
 import { OAuthModel } from "../model";
+import { config } from "../config";
 
 export const authMiddleware = {
 
@@ -16,7 +17,7 @@ export const authMiddleware = {
 
       if ( !isTokenValid ) throw new ApiException( "Invalid or expired token", 401 );
 
-      jwt.verify( accessToken, "secret-access-key", ( error ) => {
+      jwt.verify( accessToken, config.SECRET_ACCESS_KEY, ( error ) => {
          if ( error ) throw new ApiException( "Invalid or expired token", 401 );
       } );
 

@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 import { MongooseDocument } from "../interface";
 
 interface IUser extends MongooseDocument {

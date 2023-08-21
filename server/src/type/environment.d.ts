@@ -1,14 +1,13 @@
-// import { User } from "../model";
-// import { Secret } from "jsonwebtoken";
-// import fileUpload from "express-fileupload";
-// import { ObjectId } from "mongoose";
-//
-// export {};
-//
-// declare global {
-//    namespace Express {
-//       interface Request {
-//          userId?: ObjectId;
-//       }
-//    }
-// }
+import { Secret } from "jsonwebtoken";
+
+export {};
+
+declare global {
+   namespace NodeJS {
+      interface ProcessEnv {
+         PORT: number,
+         SECRET_REFRESH_KEY: Secret,
+         SECRET_ACCESS_KEY: Secret
+      }
+   }
+}
