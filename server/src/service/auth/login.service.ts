@@ -15,7 +15,7 @@ export const loginService = async ( data: ILogin ): Promise<ISuccessLogin> => {
    if ( !user || !isPasswordValid ) throw new ApiException( "Wrong email or password", 401 );
 
    const tokenPair = {
-      accessToken: jwt.sign( { userId: user.id, }, "secret-access-key", { expiresIn: "1d" } ),
+      accessToken: jwt.sign( { userId: user.id, }, "secret-access-key", { expiresIn: "30s" } ),
       refreshToken: jwt.sign( { userId: user.id }, "secret-refresh-key", { expiresIn: "7d" } )
    };
 

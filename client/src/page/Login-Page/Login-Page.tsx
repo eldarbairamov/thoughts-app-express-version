@@ -6,15 +6,17 @@ export const LoginPage = () => {
    return (
        <div className={ styles.LoginPage }>
 
-          <div className={styles.top}>
+          <div className={ styles.top }>
              <p> th </p>
 
-             <div className={styles.typing_wrapper}>
+             <div className={ styles.typing_wrapper }>
                 <h2> Login </h2>
              </div>
           </div>
 
-          <LoginForm/>
+          <div className={styles.body}>
+             <LoginForm/>
+          </div>
 
           <Footer/>
 

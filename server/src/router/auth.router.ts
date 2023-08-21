@@ -6,5 +6,5 @@ export const authRouter = Router()
 
 authRouter.post('/login', authController.login)
 authRouter.post('/registration', authController.registration)
-authRouter.post('/refresh', authMiddleware.accessControl, authController.refresh)
+authRouter.post('/refresh', authController.refresh)
 authRouter.delete('/logout', authMiddleware.accessControl, authController.logout)

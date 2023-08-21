@@ -8,7 +8,7 @@
   .top {
     @extend %center-row;
 
-    height: 7%;
+    height: 70px;
     background: var(--navbar-bg);
 
     .typing_wrapper {
@@ -33,6 +33,12 @@
       font-weight: 700;
     }
   }
+
+  .body {
+    @extend %center-column;
+    height: calc(100% - 70px);
+  }
+
 }
 
 @keyframes typing {

@@ -2,16 +2,19 @@ import axios, { InternalAxiosRequestConfig } from "axios";
 import { AxiosApiError, AxiosConfig } from "../interface/axios.interface.ts";
 import { storageApi } from "../api/storage.api.ts";
 import { authApi } from "../api/auth.api.ts";
+import { UnauthorizedRouter } from "../router/Unauthorized.router.tsx";
 
 export const axiosInstance = axios.create( { baseURL: "http://localhost:5300" } );
 
-axiosInstance.interceptors.request.use( ( config: AxiosConfig ) => {
-   const accessToken = storageApi.getAccessToken();
+axiosInstance.interceptors.request.use(
+    ( config: AxiosConfig ) => {
+       const accessToken = storageApi.getAccessToken();
 
-   if ( accessToken ) config.headers.setAuthorization( `Bearer ${ accessToken }` );
+       if ( accessToken ) config.headers.setAuthorization( `Bearer ${ accessToken }` );
 
-   return config;
-} );
+       return config;
+    },
+);
 
 axiosInstance.interceptors.response.use(
     ( config ) => {
@@ -31,6 +34,7 @@ axiosInstance.interceptors.response.use(
           }
           catch ( e ) {
              storageApi.removeTokens();
+             await UnauthorizedRouter.navigate( "/login" );
           }
 
           originalRequest._isRetry = false;

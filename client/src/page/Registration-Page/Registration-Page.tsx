@@ -9,14 +9,16 @@ export const RegistrationPage = () => {
           <div className={ styles.top }>
              <p> th </p>
 
-             <Footer/>
-
-             <div className={styles.typing_wrapper}>
+             <div className={ styles.typing_wrapper }>
                 <h2> Registration </h2>
              </div>
           </div>
 
-          <RegistrationForm/>
+          <div className={ styles.body }>
+             <RegistrationForm/>
+          </div>
+
+          <Footer/>
 
        </div>
    );

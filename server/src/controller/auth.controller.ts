@@ -21,7 +21,7 @@ export const authController = {
    } ),
 
    refresh: expressAsyncHandler( async ( req: TypedRequest<IRefresh, any, any>, res: Response<Omit<ISuccessLogin, 'username'>> ) => {
-      const result = await refreshService( req.body.refreshToken, req.userId! );
+      const result = await refreshService( req.body.refreshToken);
       res.status( 201 ).json( result );
    } )
 

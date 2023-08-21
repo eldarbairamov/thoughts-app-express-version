@@ -7,20 +7,23 @@ import { OAuthModel } from "../model";
 
 export const authMiddleware = {
 
-   accessControl: expressAsyncHandler(async ( req: TypedRequest<any, any, any> , res: Response, next: NextFunction ) => {
+   accessControl: expressAsyncHandler( async ( req: TypedRequest<any, any, any>, res: Response, next: NextFunction ) => {
       const accessToken = req.headers.authorization?.replace( "Bearer", " " ).trim();
 
       if ( !accessToken ) throw new ApiException( "Invalid or expired token", 401 );
 
       const isTokenValid = await OAuthModel.findOne( { accessToken } );
-      const isTokenAlive = jwt.verify( accessToken, 'secret-access-key');
 
-      if ( !isTokenValid || !isTokenAlive ) throw new ApiException( "Invalid or expired token", 401 );
+      if ( !isTokenValid ) throw new ApiException( "Invalid or expired token", 401 );
 
-      req.userId = isTokenValid.ownerId
-      req.token = isTokenValid.accessToken
+      jwt.verify( accessToken, "secret-access-key", ( error ) => {
+         if ( error ) throw new ApiException( "Invalid or expired token", 401 );
+      } );
+
+      req.userId = isTokenValid.ownerId;
+      req.token = isTokenValid.accessToken;
 
       next();
-   })
+   } )
 
 };

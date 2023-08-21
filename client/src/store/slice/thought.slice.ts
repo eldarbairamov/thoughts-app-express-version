@@ -32,7 +32,7 @@ const thoughtSlice = createSlice( {
       } );
 
       builder.addCase( deleteThought.fulfilled, ( state, { meta: { arg } } ) => {
-         state.thoughts = state.thoughts.filter( t => t.id !== arg.thoughtId );
+         state.thoughts = state.thoughts.filter( t => t._id !== arg.thoughtId );
       } );
       builder.addCase( deleteThought.rejected, ( state, { payload } ) => {
          state.error = payload;
