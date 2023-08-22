@@ -12,7 +12,7 @@ interface IFormControlProps {
 }
 
 export const FormControl: FC<IFormControlProps> = ( { register, error, fieldName, labelName, isPassword } ) => {
-   const [ isHide, setIsHide ] = useState<boolean>( false );
+   const [ isHide, setIsHide ] = useState<boolean>( isPassword );
 
    return (
        <div className={ styles.FormControl }>
