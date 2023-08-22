@@ -19,6 +19,8 @@
 <div align="center">
   <img src="https://skillicons.dev/icons?i=html" height="50" alt="html5 logo"  />
   <img width="5" />
+  <img src="https://skillicons.dev/icons?i=sass" height="50" alt="sass logo"  />
+  <img width="5" />
   <img src="https://skillicons.dev/icons?i=ts" height="50" alt="typescript logo"  />
   <img width="5" />
   <img src="https://skillicons.dev/icons?i=react" height="50" alt="react logo"  />
