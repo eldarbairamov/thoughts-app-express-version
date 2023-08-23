@@ -6,7 +6,7 @@ export interface IThought {
    readonly date: number
 }
 
-export interface IThoughtResponse {
+export interface IThoughts {
    readonly data: IThought[],
    readonly count: number
 }

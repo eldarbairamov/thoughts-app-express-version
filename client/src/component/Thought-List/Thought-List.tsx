@@ -18,7 +18,6 @@ export const ThoughtList = () => {
    const dispatch = useAppDispatch();
 
    const { lastElementRef } = userObserver( () => {
-      console.log('asdasd');
       dispatch( thoughtActions.limitIncrease() );
    } );
 

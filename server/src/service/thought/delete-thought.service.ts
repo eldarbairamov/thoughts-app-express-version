@@ -1,9 +1,9 @@
 import { ThoughtModel } from "../../model";
 import { ApiException } from "../../exception";
-import { IThoughtResponse } from "../../interface";
+import { IThoughts } from "../../interface";
 import { ObjectId } from "mongoose";
 
-export const deleteThoughtService = async ( thoughtId: string, userId: ObjectId, limit: string ): Promise<IThoughtResponse> => {
+export const deleteThoughtService = async ( thoughtId: string, userId: ObjectId, limit: string ): Promise<IThoughts> => {
    const target = await ThoughtModel.findOne( { _id: thoughtId } );
    if ( !target ) throw new ApiException( "Requested object does not exists", 400 );
 

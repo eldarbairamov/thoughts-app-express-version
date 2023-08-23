@@ -1,11 +1,11 @@
 import expressAsyncHandler from "express-async-handler";
 import { Response } from "express";
-import { IThought, IThoughtResponse, TypedRequest } from "../interface";
+import { IThought, IThoughts, TypedRequest } from "../interface";
 import { createThoughtService, deleteThoughtService, getAllThoughtsService } from "../service";
 
 export const thoughtsController = {
 
-   getAll: expressAsyncHandler( async ( req: TypedRequest<any, any, { limit: string }>, res: Response<IThoughtResponse> ) => {
+   getAll: expressAsyncHandler( async ( req: TypedRequest<any, any, { limit: string }>, res: Response<IThoughts> ) => {
       const thoughtList = await getAllThoughtsService( req.userId!, req.query.limit );
       res.json( thoughtList );
    } ),
@@ -15,7 +15,7 @@ export const thoughtsController = {
       res.json( thought );
    } ),
 
-   delete: expressAsyncHandler( async ( req: TypedRequest<any, { thoughtId: string }, { limit: string }>, res: Response<IThoughtResponse> ) => {
+   delete: expressAsyncHandler( async ( req: TypedRequest<any, { thoughtId: string }, { limit: string }>, res: Response<IThoughts> ) => {
       const thoughtList = await deleteThoughtService( req.params.thoughtId, req.userId!, req.query.limit );
       res.json(thoughtList );
    } )

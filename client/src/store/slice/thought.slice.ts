@@ -13,7 +13,7 @@ const initialState: IInitialState = {
    thoughts: [] as IThought[],
    error: undefined,
    count: 0,
-   limit: 10
+   limit: 30
 };
 
 const thoughtSlice = createSlice( {

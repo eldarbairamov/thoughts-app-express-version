@@ -55,7 +55,7 @@
 
 ###
 
-<p align="center">- Authentication and authorization via JWT<br>- Write thoughts<br>- Delete thoughts<br>- Random colors for each of thoughts every time page reload <br>- Theme switcher<br>- Responsive design</p>
+<p align="center">- Authentication and authorization via JWT<br>- Write thoughts<br>- Delete thoughts<br>- Random colors for each of thoughts every time page reload <br>- Infinite scroll via Intersection Observer<br>- Theme switcher<br>- Responsive design</p>
 
 ###
 
