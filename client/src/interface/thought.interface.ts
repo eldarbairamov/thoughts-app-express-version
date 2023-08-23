@@ -4,3 +4,8 @@ export interface IThought {
    readonly ownerId: string
    readonly date: number
 }
+
+export interface IThoughts {
+   data: IThought[],
+   count: number
+}

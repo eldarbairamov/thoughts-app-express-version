@@ -5,17 +5,27 @@ import { IThought } from "../../interface/thought.interface.ts";
 interface IInitialState {
    thoughts: IThought[];
    error: string | undefined;
+   count: number;
+   limit: number;
 }
 
 const initialState: IInitialState = {
    thoughts: [] as IThought[],
-   error: undefined
+   error: undefined,
+   count: 0,
+   limit: 10
 };
 
 const thoughtSlice = createSlice( {
    name: "thought",
    initialState,
-   reducers: {},
+   reducers: {
+      limitIncrease: ( state ) => {
+         if ( state.limit < state.count ) {
+            state.limit *= 2;
+         }
+      }
+   },
    extraReducers: builder => {
       builder.addCase( writeThought.fulfilled, ( state, { payload } ) => {
          state.thoughts.push( payload );
@@ -25,14 +35,16 @@ const thoughtSlice = createSlice( {
       } );
 
       builder.addCase( getAllThoughts.fulfilled, ( state, { payload } ) => {
-         state.thoughts = payload;
+         state.thoughts = payload.data;
+         state.count = payload.count;
       } );
       builder.addCase( getAllThoughts.rejected, ( state, { payload } ) => {
          state.error = payload;
       } );
 
-      builder.addCase( deleteThought.fulfilled, ( state, { meta: { arg } } ) => {
-         state.thoughts = state.thoughts.filter( t => t._id !== arg.thoughtId );
+      builder.addCase( deleteThought.fulfilled, ( state, { payload } ) => {
+         state.thoughts = payload.data;
+         state.count = payload.count;
       } );
       builder.addCase( deleteThought.rejected, ( state, { payload } ) => {
          state.error = payload;

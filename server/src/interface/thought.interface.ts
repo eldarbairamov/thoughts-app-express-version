@@ -5,3 +5,8 @@ export interface IThought {
    readonly content: string,
    readonly date: number
 }
+
+export interface IThoughtResponse {
+   readonly data: IThought[],
+   readonly count: number
+}

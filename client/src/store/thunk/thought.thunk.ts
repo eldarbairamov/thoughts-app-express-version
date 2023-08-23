@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IThought } from "../../interface/thought.interface.ts";
+import { IThought, IThoughts } from "../../interface/thought.interface.ts";
 import { thoughtApi } from "../../api/thought.api.ts";
 import { AxiosApiError } from "../../interface/axios.interface.ts";
 
-export const getAllThoughts = createAsyncThunk<IThought[], void, { rejectValue: string | undefined }>(
+export const getAllThoughts = createAsyncThunk<IThoughts, { limit: number }, { rejectValue: string | undefined }>(
     "thought/getAllThoughts",
-    async ( _, { rejectWithValue } ) => {
+    async ( {limit}, { rejectWithValue } ) => {
        try {
-          const { data } = await thoughtApi.getAll();
+          const { data } = await thoughtApi.getAll(limit);
           return data;
        }
        catch ( e ) {
@@ -31,11 +31,12 @@ export const writeThought = createAsyncThunk<IThought, { content: string }, { re
     }
 );
 
-export const deleteThought = createAsyncThunk<void, { thoughtId: number }, { rejectValue: string | undefined }>(
+export const deleteThought = createAsyncThunk<IThoughts, { thoughtId: number, limit: number }, { rejectValue: string | undefined }>(
     "thought/deleteThought",
-    async ( { thoughtId }, { rejectWithValue } ) => {
+    async ( { thoughtId, limit }, { rejectWithValue } ) => {
        try {
-          await thoughtApi.delete( thoughtId );
+          const { data } = await thoughtApi.delete( thoughtId, limit );
+          return data
        }
        catch ( e ) {
           const axiosError = e as AxiosApiError;
