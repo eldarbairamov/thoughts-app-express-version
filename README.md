@@ -59,8 +59,8 @@
 
 ###
 
-[//]: # (<h1 align="center"></h1>)
+<h1 align="center"></h1>
 
-[//]: # (<h3 align="center">Video preview :</h3>)
+<h3 align="center">Video preview :</h3>
 
-[//]: # ([<img src="https://i.ytimg.com/vi/Yj49W1MasjY/maxresdefault.jpg" width="100%">]&#40;https://youtu.be/Yj49W1MasjY "TypeTo"&#41;)
+[<img src="https://i.ytimg.com/vi/RTff6apSHE0/maxresdefault.jpg" width="100%">](https://youtu.be/RTff6apSHE0 "Thoughts")
